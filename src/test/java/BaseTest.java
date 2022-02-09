@@ -3,7 +3,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeSuite;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
 public class BaseTest {
 
     public WebDriver driver;
@@ -15,9 +14,7 @@ public class BaseTest {
 
     public void setupTest() {
         driver = new ChromeDriver();
-        //this.driver.get("http://automationpractice.com/index.php");
     }
-
 
     public void teardown() {
         driver.quit();

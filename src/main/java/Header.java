@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Header extends BasePage {
-    By toolsQaLogoBy = By.className("tools-qa-header__logo");
+    static By toolsQaLogoBy = By.className("tools-qa-header__logo");
 
     //Tutorials menu
     String tutorialCategory1 = "QA Practices";

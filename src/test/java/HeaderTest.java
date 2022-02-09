@@ -1,13 +1,8 @@
 //import io.github.bonigarcia.wdm.WebDriverManager;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 public class HeaderTest extends BaseTest {
-        public WebDriver driver;
-        BasePage basePage = new BasePage(driver);
-        Header header = new Header(driver);
-
 
     @BeforeTest
     public void setUp(){
@@ -17,9 +12,8 @@ public class HeaderTest extends BaseTest {
     @Test
     public void checkIfToolsQALogoqoOpenesHomePage() {
         System.out.println("1");
-        BasePage basePage = new BasePage(driver);
         Header header = new Header(driver);
-        basePage.openUrl();
+        BasePage.openUrl();
         header.clickOnElement(header.toolsQaLogoBy);
     }
 
