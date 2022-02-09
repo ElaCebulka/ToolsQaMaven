@@ -1,7 +1,6 @@
 import org.openqa.selenium.WebDriver;
 
 public class Form {
-    //Test data
     String firstName;
     String lastName;
     String email;
@@ -10,7 +9,7 @@ public class Form {
     String country;
     String message;
 
-    public Form(String firstName, String lastName, String email, String mobile, String city, String country, String message){
+    public Form(String firstName, String lastName, String email, String mobile, String country, String city, String message){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -59,7 +58,7 @@ public class Form {
     }
 @Override
     public String toString() {
-        return "Form: firstName: " + this.firstName + ", lastName: " + this.lastName+ ", email: " +this.email + ", mobile: " + this.mobile + ", city: " + this.city + ", message: " + this.message;
+        return "Form: firstName: " + this.firstName + ", lastName: " + this.lastName+ ", email: " +this.email + ", mobile: " + this.mobile + ", country: " + this.country + ", city: " + this.city + ", message: " + this.message;
 }
     public static class FormBuilder{
         String firstName;
@@ -67,7 +66,7 @@ public class Form {
         String email;
         String mobile;
         String country;
-        static String city;
+        String city;
         String message;
 
         FormBuilder() {
@@ -108,6 +107,7 @@ public class Form {
             form.lastName = this.lastName;
             form.email = this.email;
             form.mobile = this.mobile;
+            form.country = this.country;
             form.city = this.city;
             form.message = this.message;
             return form;

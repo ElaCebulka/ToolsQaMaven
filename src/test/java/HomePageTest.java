@@ -12,9 +12,9 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormEnrollYourself() {
         HomePage homepage = new HomePage(driver);
-        homepage.openUrl();
+        BasePage.openUrl();
         homepage.acceptCookies();
-        homepage.clickOnElement(homepage.enrollYourselfButtonBy);
+        BasePage.clickOnElement(homepage.enrollYourselfButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                 .setFirstName("Anna")
                 .setLastName("Kowal")
@@ -25,11 +25,11 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
         HomePage homepage = new HomePage(driver);
-        homepage.openUrl();
-        homepage.clickOnElement(homepage.firstTutorialInGridBy);
-        ArticlePage articlePage = new ArticlePage(driver);
-        homepage.clickOnElement(articlePage.enrollTodayAddBy);
-        homepage.clickOnElement(articlePage.goToRegistrationButtonBy);
+        BasePage.openUrl();
+        BasePage.clickOnElement(homepage.firstTutorialInGridBy);
+        BasePage.clickOnElement(ArticlePage.enrollTodayAddBy);
+        driver.manage().window().fullscreen();
+        BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                 .setFirstName("Anna")
                 .setLastName("Kowal")
@@ -44,11 +44,11 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormWrongData() {
         HomePage homepage = new HomePage(driver);
-        homepage.openUrl();
-        homepage.clickOnElement(homepage.firstTutorialInGridBy);
+        BasePage.openUrl();
+        BasePage.clickOnElement(homepage.firstTutorialInGridBy);
         driver.manage().window().fullscreen();
-        homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
-        homepage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        BasePage.clickOnElement(ArticlePage.enrollTodayAddBy);
+        BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                 .setFirstName("Anna")
                 .setLastName("Kowal")

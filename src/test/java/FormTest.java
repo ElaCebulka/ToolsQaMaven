@@ -8,6 +8,9 @@ public class FormTest {
                 .setLastName("Kowal")
                 .setEmail("aaa@kowal.com")
                 .setMobile("123333")
+                .setCity("Wroclaw")
+                .setCountry("Polska")
+                .setMessage("test message")
                 .build();
         System.out.println(form1.toString());
         System.out.println(form1.getFirstName());
