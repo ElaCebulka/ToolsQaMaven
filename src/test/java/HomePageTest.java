@@ -38,7 +38,6 @@ public class HomePageTest extends BaseTest {
                 .setCity("Wroclaw")
                 .setCountry("Poland")
                 .build());
-
     }
     //QT 8 Filling registration form - wrong data
     @Test

@@ -12,7 +12,7 @@ public class HeaderTest extends BaseTest {
     public void checkIfToolsQALogoOpensHomePage() throws InterruptedException {
         Header header = new Header(driver);
         BasePage.openUrl();
-        String url = driver.getTitle();
+        String url = driver.getCurrentUrl();
         header.clickOnElement(header.toolsQaLogoBy);
 
         System.out.println(url);
