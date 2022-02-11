@@ -11,14 +11,15 @@ public class HomePageTest extends BaseTest {
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
+        BasePage basePage = new BasePage(driver);
+        basePage.openUrl();
         HomePage homepage = new HomePage(driver);
-        BasePage.openUrl();
         homepage.acceptCookies();
         BasePage.clickOnElement(homepage.enrollYourselfButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
-                .setFirstName("Anna")
-                .setLastName("Kowal")
-                .build());
+                    .setFirstName("Anna")
+                    .setLastName("Kowal")
+                    .build());
     }
 
     //TQ-4 Filling registration form - Tutorials and Courses Grid
@@ -31,13 +32,13 @@ public class HomePageTest extends BaseTest {
         driver.manage().window().fullscreen();
         BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
-                .setFirstName("Anna")
-                .setLastName("Kowal")
-                .setEmail("anna@k.com")
-                .setMobile("123111222")
-                .setCity("Wroclaw")
-                .setCountry("Poland")
-                .build());
+                    .setFirstName("Anna")
+                    .setLastName("Kowal")
+                    .setEmail("anna@k.com")
+                    .setMobile("123111222")
+                    .setCity("Wroclaw")
+                    .setCountry("Poland")
+                    .build());
     }
     //QT 8 Filling registration form - wrong data
     @Test
@@ -49,9 +50,12 @@ public class HomePageTest extends BaseTest {
         BasePage.clickOnElement(ArticlePage.enrollTodayAddBy);
         BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
-                .setFirstName("Anna")
-                .setLastName("Kowal")
-                .setMobile("aaaa")
-                .build());
+                    .setFirstName("Anna")
+                    .setLastName("Kowal")
+                    .setEmail("ana@aa.com")
+                    .setMobile("aaaa")
+                    .setCity("Wroclaw")
+                    .setCountry("Poland")
+                    .build());
     }
 }

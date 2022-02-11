@@ -17,7 +17,7 @@ public class BasePage {
 
     public static final String url = "https://www.toolsqa.com/";
 
-    public BasePage(WebDriver driver) {
+    public  BasePage(WebDriver driver) {
         this.driver = new ChromeDriver();
         wait = new WebDriverWait(driver,timeout, POLLING);
         //co to robi?

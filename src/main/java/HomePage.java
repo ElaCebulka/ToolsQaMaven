@@ -32,6 +32,11 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    public static void openUrl() {
+        driver.get(url);
+        driver.manage().window().fullscreen();
+    }
+
     public void acceptCookies() {
         wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
         clickOnElement(acceptCookiesButtonBy);

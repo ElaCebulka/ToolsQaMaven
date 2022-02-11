@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebDriver;
 
 public class Form {
     String firstName;
@@ -58,7 +57,7 @@ public class Form {
     }
 @Override
     public String toString() {
-        return "Form: firstName: " + this.firstName + ", lastName: " + this.lastName+ ", email: " +this.email + ", mobile: " + this.mobile + ", country: " + this.country + ", city: " + this.city + ", message: " + this.message;
+        return "Form: firstName: " + this.firstName + ", lastName: " + this.lastName+ ", email: " +this.email + ", mobile: " + this.mobile + ", city: " + this.city +", country: " + this.country + ", message: " + this.message;
 }
     public static class FormBuilder{
         String firstName;
@@ -75,7 +74,6 @@ public class Form {
             this.firstName=firstName;
             return this;
         }
-
         public FormBuilder setLastName(String lastName) {
             this.lastName=lastName;
             return this;

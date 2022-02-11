@@ -1,0 +1,8 @@
+"Anna", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","Polska", "test message"
+"", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","Polska", "test message"
+"Anna", "", "aaa@kowal.com", "123333", "Wroclaw","Polska", "test message"
+"Anna", "Kowal", "", "123333", "Wroclaw","Polska", "test message"
+"Anna", "Kowal", "aaa@kowal.com", "", "Wroclaw","Polska", "test message"
+"Anna", "Kowal", "aaa@kowal.com", "123333", "","Polska", "test message"
+"Anna", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","", "test message"
+"Anna", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","Polska", ""
