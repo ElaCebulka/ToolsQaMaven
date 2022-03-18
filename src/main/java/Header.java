@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Header extends BasePage {
-    static By toolsQaLogoBy = By.className("tools-qa-header__logo");
+    private By toolsQaLogoBy = By.className("tools-qa-header__logo");
 
     //Tutorials menu
     String tutorialCategory1 = "QA Practices";
@@ -21,10 +21,14 @@ public class Header extends BasePage {
     //setUp
     public Header(WebDriver driver) {
         super(driver);
-        this.driver=driver;
+        this.driver = driver;
     }
 
-   public void searchTraining(String trainingName) {
+    public void clickOnToolsQaLogo() {
+        clickOnElement(toolsQaLogoBy);
+    }
+
+    public void searchTraining(String trainingName) {
         clickOnElement(searchHeaderMenuBy).sendKeys(trainingName);
         clickOnElement(searchIconBy);
     }
