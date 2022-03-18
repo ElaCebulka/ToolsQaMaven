@@ -1,3 +1,5 @@
+import driver.DriverFactory;
+import driver.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
@@ -9,9 +11,12 @@ public  class BaseTest {
     public WebDriver driver;
 
     @BeforeSuite
-    public void setupClass() {
+    public WebDriver setupClass() {
+        driver = DriverFactory.getDriver(DriverType.CHROME);
+        return driver;
+      /*
        WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver();*/
     }
 
     @AfterSuite
