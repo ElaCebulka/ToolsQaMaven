@@ -21,6 +21,7 @@ public class BasePage {
         //this.driver = DriverFactory.getDriver(DriverType.CHROME);
 
         this.driver = driver;
+        wait = new WebDriverWait(driver,30);
         //wait = new WebDriverWait(driver,timeout, POLLING);
         //co to robi?
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);

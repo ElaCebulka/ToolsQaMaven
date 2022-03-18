@@ -3,13 +3,13 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
 
-    HomePage homepage = new HomePage(driver);
-
     //@BeforeTest
 
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
+        HomePage homepage = new HomePage(driver);
+
         homepage.openUrl();
         homepage.acceptCookies();
         homepage.clickOnElement(homepage.enrollYourselfButtonBy);
@@ -22,6 +22,8 @@ public class HomePageTest extends BaseTest {
     //TQ-4 Filling registration form - Tutorials and Courses Grid
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
+        HomePage homepage = new HomePage(driver);
+
         homepage.openUrl();
         homepage.clickOnElement(homepage.firstTutorialInGridBy);
         homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
@@ -39,6 +41,8 @@ public class HomePageTest extends BaseTest {
     //QT 8 Filling registration form - wrong data
     @Test
     public void fillRegistrationFormWrongData() {
+        HomePage homepage = new HomePage(driver);
+
         homepage.openUrl();
         homepage.clickOnElement(homepage.firstTutorialInGridBy);
         driver.manage().window().fullscreen();
