@@ -21,6 +21,7 @@ public class Header extends BasePage {
     //setUp
     public Header(WebDriver driver) {
         super(driver);
+        this.driver=driver;
     }
 
    public void searchTraining(String trainingName) {

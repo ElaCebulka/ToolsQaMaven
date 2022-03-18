@@ -1,9 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
     public final String url = "https://www.toolsqa.com/";
+    WebDriver driver;
 
     By acceptCookiesButtonBy = By.cssSelector("button#accept-cookie-policy");
     By enrollYourselfButtonBy = By.cssSelector("a[href=\"/selenium-training#enroll-form\"]");
@@ -34,7 +36,7 @@ public class HomePage extends BasePage {
         this.driver = driver;
     }
 
-    public  void openUrl() {
+    public void openUrl() {
         driver.get(url);
         driver.manage().window().fullscreen();
     }

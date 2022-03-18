@@ -3,16 +3,15 @@ import org.testng.annotations.*;
 
 public class HeaderTest extends BaseTest {
 
-    /*@BeforeTest
-    public void setUp(){
-        super.setupTest();
-    }*/
 
+    //@BeforeTest
     @Test
     public void checkIfToolsQALogoOpensHomePage() {
-        HomePage hompage = new HomePage(driver);
+        //trzeba przeniesc poza metode
         Header header = new Header(driver);
-        hompage.openUrl();
+        HomePage homePage = new HomePage(driver);
+        //
+        homePage.openUrl();
         String url = driver.getCurrentUrl();
         header.clickOnElement(header.toolsQaLogoBy);
         System.out.println(url);
