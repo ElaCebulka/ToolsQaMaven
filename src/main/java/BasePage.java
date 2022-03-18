@@ -9,25 +9,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
 
 public class BasePage {
-    protected static WebDriver driver;
+    protected static WebDriver driver ;
     protected WebDriverWait wait;
 
     private static final int timeout = 10;
     private static final int POLLING = 100;
 
-    public static final String url = "https://www.toolsqa.com/";
 
     public  BasePage(WebDriver driver) {
-        this.driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,timeout, POLLING);
+        this.driver = driver;
+        //wait = new WebDriverWait(driver,timeout, POLLING);
         //co to robi?
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
     }
 
-    public static void openUrl() {
-        driver.get(url);
-        driver.manage().window().fullscreen();
-    }
+
     public void reloadPage() {
         driver.navigate().refresh();
     }

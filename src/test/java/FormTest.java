@@ -11,7 +11,7 @@ import java.util.List;
 public class FormTest {
 
     @Test
-    public void checkNewForm() {
+    public void checkNewFormBulider() {
         List<String> expectedResultList = Arrays.asList("Anna", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","Polska", "test message");
         Form form = new Form.FormBuilder().setFirstName("Anna")
                 .setLastName("Kowal")
@@ -38,7 +38,7 @@ public class FormTest {
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv")
-    public void checkDifferentForms(ArgumentsAccessor argumentsAccessor) {
+    public void checkDifferentFormsCsvFile(ArgumentsAccessor argumentsAccessor) {
         Form form = new Form();
         form.firstName = argumentsAccessor.getString(0);
         form.lastName = argumentsAccessor.getString(1);

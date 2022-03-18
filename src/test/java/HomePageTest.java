@@ -3,19 +3,19 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
 
+
     @BeforeTest
-    public void setUp() {
-        super.setupTest();
-    }
+   /* public void setUp() {
+        //super.setupTest();
+    }*/
 
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
-        BasePage basePage = new BasePage(driver);
-        basePage.openUrl();
         HomePage homepage = new HomePage(driver);
+        homepage.openUrl();
         homepage.acceptCookies();
-        BasePage.clickOnElement(homepage.enrollYourselfButtonBy);
+        homepage.clickOnElement(homepage.enrollYourselfButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
@@ -26,11 +26,12 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
         HomePage homepage = new HomePage(driver);
-        BasePage.openUrl();
-        BasePage.clickOnElement(homepage.firstTutorialInGridBy);
-        BasePage.clickOnElement(ArticlePage.enrollTodayAddBy);
+
+        homepage.openUrl();
+        homepage.clickOnElement(homepage.firstTutorialInGridBy);
+        homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
         driver.manage().window().fullscreen();
-        BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homepage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
@@ -44,11 +45,11 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormWrongData() {
         HomePage homepage = new HomePage(driver);
-        BasePage.openUrl();
-        BasePage.clickOnElement(homepage.firstTutorialInGridBy);
+        homepage.openUrl();
+        homepage.clickOnElement(homepage.firstTutorialInGridBy);
         driver.manage().window().fullscreen();
-        BasePage.clickOnElement(ArticlePage.enrollTodayAddBy);
-        BasePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
+        homepage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
         homepage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
