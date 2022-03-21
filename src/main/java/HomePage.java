@@ -1,3 +1,4 @@
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
     public final String url = "https://www.toolsqa.com/";
-    WebDriver driver;
-
     By acceptCookiesButtonBy = By.cssSelector("button#accept-cookie-policy");
     By enrollYourselfButtonBy = By.cssSelector("a[href=\"/selenium-training#enroll-form\"]");
 

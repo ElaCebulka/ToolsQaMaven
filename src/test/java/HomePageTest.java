@@ -1,10 +1,15 @@
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
-
-    //@BeforeTest
-
+    HomePage homePage;
+    private Header header;
+    @BeforeClass
+    public void setUp() {
+        homePage = new HomePage(driver);
+        header = new Header(driver);
+    }
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {

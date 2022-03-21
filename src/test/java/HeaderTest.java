@@ -2,14 +2,19 @@ import org.assertj.core.api.Assertions;
 import org.testng.annotations.*;
 
 public class HeaderTest extends BaseTest {
-
-
+    //Header header = new Header(driver);
+    HomePage homePage;
+    private Header header;
+    @BeforeClass
+    public void setUp() {
+        homePage = new HomePage(driver);
+        header = new Header(driver);
+    }
     //@BeforeTest
     @Test
     public void checkIfToolsQALogoOpensHomePage() {
         //trzeba przeniesc poza metode
-        Header header = new Header(driver);
-        HomePage homePage = new HomePage(driver);
+
         //
         homePage.openUrl();
         String url = driver.getCurrentUrl();
