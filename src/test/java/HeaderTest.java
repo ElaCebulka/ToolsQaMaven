@@ -18,8 +18,7 @@ public class HeaderTest extends BaseTest {
         //
         homePage.openUrl();
         String url = driver.getCurrentUrl();
-        header.clickOnElement(header.toolsQaLogoBy);
-        System.out.println(url);
+        header.clickOnToolsQaLogo();
         Assertions.assertThat(url).isEqualTo("https://www.toolsqa.com/");
     }
 

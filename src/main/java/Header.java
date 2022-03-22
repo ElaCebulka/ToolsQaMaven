@@ -3,8 +3,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Header extends BasePage {
+    private By toolsQaLogoBy = By.className("tools-qa-header__logo");
 
-    static By toolsQaLogoBy = By.className("tools-qa-header__logo");
     //Tutorials menu
     String tutorialCategory1 = "QA Practices";
     String tutorialCategory2 = "Agile & Scrum";
@@ -18,13 +18,18 @@ public class Header extends BasePage {
     By AboutHeaderMenuBy = By.xpath("//a[contains(text(), \"About\")]");
     By searchHeaderMenuBy = By.cssSelector("div.navbar__search input");
     By searchIconBy = By.cssSelector("div.navbar__search icon");
+
     //setUp
     public Header(WebDriver driver) {
         super(driver);
-        this.driver=driver;
+        this.driver = driver;
     }
 
-   public void searchTraining(String trainingName) {
+    public void clickOnToolsQaLogo() {
+        clickOnElement(toolsQaLogoBy);
+    }
+
+    public void searchTraining(String trainingName) {
         clickOnElement(searchHeaderMenuBy).sendKeys(trainingName);
         clickOnElement(searchIconBy);
     }
