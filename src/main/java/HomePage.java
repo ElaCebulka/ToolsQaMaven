@@ -1,5 +1,6 @@
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,9 +54,12 @@ public class HomePage extends BasePage {
 
     public void fillTheForm(Form form) {
         System.out.println("1");
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
         scrollToSeeElement(driver.findElement(firstNameFormBy));
-        clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", driver.findElement(firstNameFormBy));
         System.out.println("2");
+        clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
         clickOnElement(lastNameFormBy).sendKeys(form.getLastName());
         System.out.println("3");
         clickOnElement(emailFormBy).sendKeys(form.getEmail());
