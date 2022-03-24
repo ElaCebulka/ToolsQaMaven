@@ -38,13 +38,40 @@ public class HomePage extends BasePage {
 
     public void openUrl() {
         driver.get(url);
-        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
     }
 
     public void acceptCookies() {
         //wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
         clickOnElement(acceptCookiesButtonBy);
     }
+
+    public void clickOnEnrollYourselfButton() {
+        clickOnElement(enrollYourselfButtonBy);
+    }
+    public void clickOnFirstTutorialInGrid() {
+        clickOnElement(firstTutorialInGridBy);
+    }
+    public void clickOnEnrollTodayAdd() {
+        clickOnElement(ArticlePage.enrollTodayAddBy);
+    }
+    public void clickOnGoToRegistrationButton() {
+        clickOnElement(ArticlePage.goToRegistrationButtonBy);
+    }
+    public void openFormWithEnrollYourselfButton() {
+        openUrl();
+        acceptCookies();
+        clickOnEnrollYourselfButton();
+    }
+
+    public void openFormFromTutorialsAndCourses() {
+        openUrl();
+        acceptCookies();
+        clickOnFirstTutorialInGrid();
+        clickOnEnrollTodayAdd();
+        clickOnGoToRegistrationButton();
+    }
+
 
     public void selectCountryOnForm(String country){
         clickOnElement(countryFormBy);

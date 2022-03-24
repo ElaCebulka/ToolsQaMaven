@@ -1,5 +1,4 @@
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
@@ -13,9 +12,7 @@ public class HomePageTest extends BaseTest {
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
-        homePage.openUrl();
-        homePage.acceptCookies();
-        homePage.clickOnElement(homePage.enrollYourselfButtonBy);
+        homePage.openFormWithEnrollYourselfButton();
         homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
@@ -25,11 +22,7 @@ public class HomePageTest extends BaseTest {
     //TQ-4 Filling registration form - Tutorials and Courses Grid
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
-        homePage.openUrl();
-        homePage.clickOnElement(homePage.firstTutorialInGridBy);
-        homePage.clickOnElement(ArticlePage.enrollTodayAddBy);
-        driver.manage().window().fullscreen();
-        homePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homePage.openFormFromTutorialsAndCourses();
         homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
@@ -42,11 +35,7 @@ public class HomePageTest extends BaseTest {
     //QT 8 Filling registration form - wrong data
     @Test
     public void fillRegistrationFormWrongData() {
-        homePage.openUrl();
-        homePage.clickOnElement(homePage.firstTutorialInGridBy);
-        driver.manage().window().fullscreen();
-        homePage.clickOnElement(ArticlePage.enrollTodayAddBy);
-        homePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homePage.openFormFromTutorialsAndCourses();
         homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
