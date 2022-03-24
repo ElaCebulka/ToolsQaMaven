@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
-    public final String url = "https://www.toolsqa.com/";
+    private final String url = "https://www.toolsqa.com/";
     By acceptCookiesButtonBy = By.cssSelector("button#accept-cookie-policy");
     By enrollYourselfButtonBy = By.cssSelector("a.btn.btn-primary-shadow.btn-block");
 
@@ -42,7 +42,7 @@ public class HomePage extends BasePage {
     }
 
     public void acceptCookies() {
-        //wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
+        wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
         clickOnElement(acceptCookiesButtonBy);
     }
 
@@ -62,6 +62,7 @@ public class HomePage extends BasePage {
         openUrl();
         acceptCookies();
         clickOnEnrollYourselfButton();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
     }
 
     public void openFormFromTutorialsAndCourses() {
@@ -70,40 +71,46 @@ public class HomePage extends BasePage {
         clickOnFirstTutorialInGrid();
         clickOnEnrollTodayAdd();
         clickOnGoToRegistrationButton();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
     }
-
 
     public void selectCountryOnForm(String country){
         clickOnElement(countryFormBy);
-        By countryValueFormBy = By.xpath("//option[contains(text(), " + country +")]");
+        By countryValueFormBy = By.xpath("//option[contains(text(), '" + country +"')]");
         clickOnElement(countryValueFormBy);
+        System.out.println(driver.findElement(By.xpath("//select[@class=\"upcoming__registration--input\"]/parent::div")).getText());
     }
 
     public void fillTheForm(Form form) {
-        System.out.println("1");
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
-        //zamiast wait
+        // scroll top - to avoid header covers FirsName input
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        //scroll to see FirsName input
         scrollToSeeElement(driver.findElement(firstNameFormBy));
-        //zamiast scroll
-        WebElement e = driver.findElement(firstNameFormBy);
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].click()", e);
-        System.out.println("2");
 
-        clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
-        clickOnElement(lastNameFormBy).sendKeys(form.getLastName());
-        System.out.println("3");
-        clickOnElement(emailFormBy).sendKeys(form.getEmail());
-        System.out.println("4");
-        clickOnElement(mobileFormBy).sendKeys(form.getMobile());
-        System.out.println("5");
-        selectCountryOnForm(form.getCountry());
-        System.out.println("7");
-        clickOnElement(cityFormBy).sendKeys(form.getCity());
-        System.out.println("8");
-        clickOnElement(messageFormBy).sendKeys(form.getMessage());
-        System.out.println("9");
+        if (form.getFirstName()!= null) {
+            clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
+        }
+        if (form.getLastName()!= null) {
+            clickOnElement(lastNameFormBy).sendKeys(form.getLastName());
+        }
+        if (form.getEmail()!= null) {
+            clickOnElement(emailFormBy).sendKeys(form.getEmail());
+        }
+        if (form.getMobile()!= null) {
+            clickOnElement(mobileFormBy).sendKeys(form.getMobile());
+        }
+        if (form.getCountry()!= null) {
+            selectCountryOnForm(form.getCountry());
+        }
+        if (form.getCity()!= null) {
+            clickOnElement(cityFormBy).sendKeys(form.getCity());
+        }
+        if (form.getMessage()!= null) {
+            clickOnElement(messageFormBy).sendKeys(form.getMessage());
+        }
+    }
+    public void sendForm() {
         clickOnElement(sendButtonFormBy);
     }
-
 }

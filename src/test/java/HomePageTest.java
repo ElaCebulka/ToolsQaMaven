@@ -1,3 +1,4 @@
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,6 +18,7 @@ public class HomePageTest extends BaseTest {
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .build());
+        homePage.sendForm();
     }
 
     //TQ-4 Filling registration form - Tutorials and Courses Grid
@@ -31,6 +33,8 @@ public class HomePageTest extends BaseTest {
                     .setCity("Wroclaw")
                     .setCountry("Poland")
                     .build());
+        homePage.sendForm();
+
     }
     //QT 8 Filling registration form - wrong data
     @Test
@@ -44,5 +48,7 @@ public class HomePageTest extends BaseTest {
                     .setCity("Wroclaw")
                     .setCountry("Poland")
                     .build());
+        homePage.sendForm();
     }
+
 }

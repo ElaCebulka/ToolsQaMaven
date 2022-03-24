@@ -48,8 +48,6 @@ public class BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
-
-        //((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     boolean isLoaded() {
