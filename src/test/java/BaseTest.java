@@ -13,7 +13,7 @@ public  class BaseTest {
         driver = DriverFactory.getDriver(DriverType.CHROME);
     }
 
-    @AfterSuite
+    //@AfterSuite
     public void teardown() {
         driver.quit();
     }

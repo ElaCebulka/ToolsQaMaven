@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomePage extends BasePage {
     public final String url = "https://www.toolsqa.com/";
     By acceptCookiesButtonBy = By.cssSelector("button#accept-cookie-policy");
-    By enrollYourselfButtonBy = By.cssSelector("a[href=\"/selenium-training#enroll-form\"]");
+    By enrollYourselfButtonBy = By.cssSelector("a.btn.btn-primary-shadow.btn-block");
 
     //Form
     By firstNameFormBy = By.cssSelector("input#first-name");
@@ -41,7 +41,7 @@ public class HomePage extends BasePage {
     }
 
     public void acceptCookies() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
+        //wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
         clickOnElement(acceptCookiesButtonBy);
     }
 

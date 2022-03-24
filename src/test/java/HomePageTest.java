@@ -1,8 +1,9 @@
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
-    HomePage homePage;
+    private HomePage homePage;
     private Header header;
     @BeforeClass
     public void setUp() {
@@ -12,10 +13,10 @@ public class HomePageTest extends BaseTest {
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
-        homepage.openUrl();
-        homepage.acceptCookies();
-        homepage.clickOnElement(homepage.enrollYourselfButtonBy);
-        homepage.fillTheForm(new Form.FormBuilder()
+        homePage.openUrl();
+        homePage.acceptCookies();
+        homePage.clickOnElement(homePage.enrollYourselfButtonBy);
+        homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .build());
@@ -24,12 +25,12 @@ public class HomePageTest extends BaseTest {
     //TQ-4 Filling registration form - Tutorials and Courses Grid
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
-        homepage.openUrl();
-        homepage.clickOnElement(homepage.firstTutorialInGridBy);
-        homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
+        homePage.openUrl();
+        homePage.clickOnElement(homePage.firstTutorialInGridBy);
+        homePage.clickOnElement(ArticlePage.enrollTodayAddBy);
         driver.manage().window().fullscreen();
-        homepage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
-        homepage.fillTheForm(new Form.FormBuilder()
+        homePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .setEmail("anna@k.com")
@@ -41,12 +42,12 @@ public class HomePageTest extends BaseTest {
     //QT 8 Filling registration form - wrong data
     @Test
     public void fillRegistrationFormWrongData() {
-        homepage.openUrl();
-        homepage.clickOnElement(homepage.firstTutorialInGridBy);
+        homePage.openUrl();
+        homePage.clickOnElement(homePage.firstTutorialInGridBy);
         driver.manage().window().fullscreen();
-        homepage.clickOnElement(ArticlePage.enrollTodayAddBy);
-        homepage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
-        homepage.fillTheForm(new Form.FormBuilder()
+        homePage.clickOnElement(ArticlePage.enrollTodayAddBy);
+        homePage.clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        homePage.fillTheForm(new Form.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .setEmail("ana@aa.com")
