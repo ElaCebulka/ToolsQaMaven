@@ -55,10 +55,14 @@ public class HomePage extends BasePage {
     public void fillTheForm(Form form) {
         System.out.println("1");
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
+        //zamiast wait
         scrollToSeeElement(driver.findElement(firstNameFormBy));
+        //zamiast scroll
+        WebElement e = driver.findElement(firstNameFormBy);
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].click()", driver.findElement(firstNameFormBy));
+        jse.executeScript("arguments[0].click()", e);
         System.out.println("2");
+
         clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
         clickOnElement(lastNameFormBy).sendKeys(form.getLastName());
         System.out.println("3");
