@@ -1,7 +1,10 @@
+package pages.components;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
-public class Footer extends BasePage{
+public class Footer extends BasePage {
     //setUp
     public Footer(WebDriver driver) {
         super(driver);

@@ -1,9 +1,11 @@
-import org.junit.BeforeClass;
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import pages.components.RegistrationForm;
 
 public class HomePage extends BasePage {
     private final String url = "https://www.toolsqa.com/";
@@ -43,6 +45,12 @@ public class HomePage extends BasePage {
 
     public void acceptCookies() {
         wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("e");
+        }
+
         clickOnElement(acceptCookiesButtonBy);
     }
 
@@ -78,10 +86,10 @@ public class HomePage extends BasePage {
         clickOnElement(countryFormBy);
         By countryValueFormBy = By.xpath("//option[contains(text(), '" + country +"')]");
         clickOnElement(countryValueFormBy);
-        System.out.println(driver.findElement(By.xpath("//select[@class=\"upcoming__registration--input\"]/parent::div")).getText());
+        //System.out.println(driver.findElement(By.xpath("//select[@class=\"upcoming__registration--input\"]/parent::div")).getText());
     }
 
-    public void fillTheForm(Form form) {
+    public void fillTheForm(RegistrationForm form) {
         // scroll top - to avoid header covers FirsName input
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");

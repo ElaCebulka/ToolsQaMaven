@@ -1,5 +1,9 @@
+package tests;
+
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.*;
+import pages.HomePage;
+import pages.components.Header;
 
 public class HeaderTest extends BaseTest {
     private HomePage homePage;

@@ -1,6 +1,9 @@
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+package tests;
+
+import org.junit.*;
+import pages.HomePage;
+import pages.components.Header;
+import pages.components.RegistrationForm;
 
 public class HomePageTest extends BaseTest {
     private HomePage homePage;
@@ -10,11 +13,15 @@ public class HomePageTest extends BaseTest {
         homePage = new HomePage(driver);
         header = new Header(driver);
     }
+    @Before
+    public void deleteAllCookies() {
+        driver.manage().deleteAllCookies();
+    }
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {
         homePage.openFormWithEnrollYourselfButton();
-        homePage.fillTheForm(new Form.FormBuilder()
+        homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .build());
@@ -25,7 +32,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormTutorialsAndCourses() {
         homePage.openFormFromTutorialsAndCourses();
-        homePage.fillTheForm(new Form.FormBuilder()
+        homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .setEmail("anna@k.com")
@@ -40,7 +47,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void fillRegistrationFormWrongData() {
         homePage.openFormFromTutorialsAndCourses();
-        homePage.fillTheForm(new Form.FormBuilder()
+        homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
                     .setEmail("ana@aa.com")

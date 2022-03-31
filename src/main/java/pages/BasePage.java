@@ -1,7 +1,5 @@
-import driver.DriverFactory;
-import driver.DriverType;
+package pages;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -38,7 +36,7 @@ public class BasePage {
     }
 
     public static WebElement clickOnElement(By byLocator) {
-        setElement(byLocator);
+        //setElement(byLocator);
         WebElement elementToClick = driver.findElement(byLocator);
         elementToClick.click();
         return elementToClick;

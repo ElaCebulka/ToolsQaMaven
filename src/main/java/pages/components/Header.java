@@ -1,6 +1,8 @@
-import org.junit.BeforeClass;
+package pages.components;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class Header extends BasePage {
     private By toolsQaLogoBy = By.className("tools-qa-header__logo");
