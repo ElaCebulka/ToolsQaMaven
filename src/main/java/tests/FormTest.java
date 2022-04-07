@@ -1,12 +1,10 @@
 package tests;
 
-import org.assertj.core.api.Assertions;
 import org.asynchttpclient.util.Assertions;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.testng.annotations.Test;
 import pages.components.RegistrationForm;
 
 import java.util.ArrayList;

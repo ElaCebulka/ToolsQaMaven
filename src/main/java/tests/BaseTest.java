@@ -3,7 +3,7 @@ package tests;
 import driver.DriverFactory;
 import driver.DriverType;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
+//import org.junit.Befo;
 import org.testng.annotations.BeforeSuite;
 
 public  class BaseTest {

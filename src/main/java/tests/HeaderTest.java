@@ -1,7 +1,7 @@
 package tests;
 
-import org.assertj.core.api.Assertions;
-import org.testng.annotations.*;
+import org.asynchttpclient.util.Assertions;
+import org.junit.*;
 import pages.HomePage;
 import pages.components.Header;
 
