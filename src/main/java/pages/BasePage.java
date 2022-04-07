@@ -17,8 +17,6 @@ public class BasePage {
 
 
     public  BasePage(WebDriver driver) {
-        //this.driver = DriverFactory.getDriver(DriverType.CHROME);
-
         this.driver = driver;
         wait = new WebDriverWait(driver,30);
         //wait = new WebDriverWait(driver,timeout, POLLING);
@@ -33,13 +31,6 @@ public class BasePage {
 
     public static WebElement setElement(By byLocator) {
         return driver.findElement(byLocator);
-    }
-
-    public static WebElement clickOnElement(By byLocator) {
-        //setElement(byLocator);
-        WebElement elementToClick = driver.findElement(byLocator);
-        elementToClick.click();
-        return elementToClick;
     }
 
     public void scrollToSeeElement(WebElement element) {

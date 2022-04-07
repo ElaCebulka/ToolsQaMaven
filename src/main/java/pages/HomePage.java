@@ -51,20 +51,20 @@ public class HomePage extends BasePage {
             System.out.println("e");
         }
 
-        clickOnElement(acceptCookiesButtonBy);
+        driver.findElement(acceptCookiesButtonBy).click();
     }
 
     public void clickOnEnrollYourselfButton() {
-        clickOnElement(enrollYourselfButtonBy);
+        driver.findElement(enrollYourselfButtonBy).click();
     }
     public void clickOnFirstTutorialInGrid() {
-        clickOnElement(firstTutorialInGridBy);
+        driver.findElement(firstTutorialInGridBy);
     }
     public void clickOnEnrollTodayAdd() {
-        clickOnElement(ArticlePage.enrollTodayAddBy);
+        driver.findElement(ArticlePage.enrollTodayAddBy);
     }
     public void clickOnGoToRegistrationButton() {
-        clickOnElement(ArticlePage.goToRegistrationButtonBy);
+        driver.findElement(ArticlePage.goToRegistrationButtonBy);
     }
     public void openFormWithEnrollYourselfButton() {
         openUrl();
@@ -83,9 +83,9 @@ public class HomePage extends BasePage {
     }
 
     public void selectCountryOnForm(String country){
-        clickOnElement(countryFormBy);
+        driver.findElement(countryFormBy);
         By countryValueFormBy = By.xpath("//option[contains(text(), '" + country +"')]");
-        clickOnElement(countryValueFormBy);
+        driver.findElement(countryValueFormBy);
         //System.out.println(driver.findElement(By.xpath("//select[@class=\"upcoming__registration--input\"]/parent::div")).getText());
     }
 
@@ -97,28 +97,28 @@ public class HomePage extends BasePage {
         scrollToSeeElement(driver.findElement(firstNameFormBy));
 
         if (form.getFirstName()!= null) {
-            clickOnElement(firstNameFormBy).sendKeys(form.getFirstName());
+            driver.findElement(firstNameFormBy).sendKeys(form.getFirstName());
         }
         if (form.getLastName()!= null) {
-            clickOnElement(lastNameFormBy).sendKeys(form.getLastName());
+            driver.findElement(lastNameFormBy).sendKeys(form.getLastName());
         }
         if (form.getEmail()!= null) {
-            clickOnElement(emailFormBy).sendKeys(form.getEmail());
+            driver.findElement(emailFormBy).sendKeys(form.getEmail());
         }
         if (form.getMobile()!= null) {
-            clickOnElement(mobileFormBy).sendKeys(form.getMobile());
+            driver.findElement(mobileFormBy).sendKeys(form.getMobile());
         }
         if (form.getCountry()!= null) {
             selectCountryOnForm(form.getCountry());
         }
         if (form.getCity()!= null) {
-            clickOnElement(cityFormBy).sendKeys(form.getCity());
+            driver.findElement(cityFormBy).sendKeys(form.getCity());
         }
         if (form.getMessage()!= null) {
-            clickOnElement(messageFormBy).sendKeys(form.getMessage());
+            driver.findElement(messageFormBy).sendKeys(form.getMessage());
         }
     }
     public void sendForm() {
-        clickOnElement(sendButtonFormBy);
+        driver.findElement(sendButtonFormBy);
     }
 }

@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.*;
+import org.testng.annotations.*;
 import pages.HomePage;
 import pages.components.Header;
 import pages.components.RegistrationForm;
@@ -13,7 +13,7 @@ public class HomePageTest extends BaseTest {
         homePage = new HomePage(driver);
         header = new Header(driver);
     }
-    @Before
+    @BeforeClass
     public void deleteAllCookies() {
         driver.manage().deleteAllCookies();
     }

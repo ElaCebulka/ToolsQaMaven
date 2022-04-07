@@ -28,18 +28,18 @@ public class Header extends BasePage {
     }
 
     public void clickOnToolsQaLogo() {
-        clickOnElement(toolsQaLogoBy);
+        driver.findElement(toolsQaLogoBy).click();
     }
 
     public void searchTraining(String trainingName) {
-        clickOnElement(searchHeaderMenuBy).sendKeys(trainingName);
-        clickOnElement(searchIconBy);
+        driver.findElement(searchHeaderMenuBy).sendKeys(trainingName);
+        driver.findElement(searchIconBy);
     }
 
     public void openTutorialFromMenu() {
-        clickOnElement(tutorialsHeaderMenuBy);
-        clickOnElement(tutorialCategory1By);
-        clickOnElement(tutorialCategory2By);
+        driver.findElement(tutorialsHeaderMenuBy);
+        driver.findElement(tutorialCategory1By);
+        driver.findElement(tutorialCategory2By);
     }
 
     //@Override

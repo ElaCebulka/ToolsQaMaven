@@ -1,7 +1,7 @@
 package tests;
 
-import org.asynchttpclient.util.Assertions;
-import org.junit.*;
+import static org.assertj.core.api.Assertions.*;
+import org.testng.annotations.*;
 import pages.HomePage;
 import pages.components.Header;
 
@@ -19,7 +19,7 @@ public class HeaderTest extends BaseTest {
         homePage.openUrl();
         String url = driver.getCurrentUrl();
         header.clickOnToolsQaLogo();
-        Assertions.assertThat(url).isEqualTo("https://www.toolsqa.com/");
+        assertThat(url).isEqualTo("https://www.toolsqa.com/");
     }
 
 }
