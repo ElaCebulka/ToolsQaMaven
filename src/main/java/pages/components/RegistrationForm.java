@@ -1,14 +1,15 @@
+package pages.components;
 
-public class Form {
+public class RegistrationForm {
     String firstName;
-    String lastName;
-    String email;
-    String mobile;
-    String city;
-    String country;
-    String message;
+    public String lastName;
+    public String email;
+    public String mobile;
+    public String city;
+    public String country;
+    public String message;
 
-    public Form(String firstName, String lastName, String email, String mobile, String country, String city, String message){
+    public RegistrationForm(String firstName, String lastName, String email, String mobile, String country, String city, String message){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -18,41 +19,34 @@ public class Form {
         this.message=message;
     }
 
-    public Form() {
+    public RegistrationForm() {
     }
 
     public String getFirstName(){
-        this.firstName = firstName;
         return firstName;
     }
 
     public String getLastName(){
-        this.lastName = lastName;
         return lastName;
     }
 
     public String getEmail(){
-        this.email = email;
         return email;
     }
 
     public String getMobile(){
-        this.mobile= mobile;
         return mobile;
     }
 
     public String getCountry(){
-        this.country = country;
         return country;
     }
 
     public String getCity(){
-        this.city = city;
         return city;
     }
 
     public String getMessage(){
-        this.message = message;
         return message;
     }
 @Override
@@ -68,7 +62,7 @@ public class Form {
         String city;
         String message;
 
-        FormBuilder() {
+        public FormBuilder() {
         }
         public FormBuilder setFirstName(String firstName) {
             this.firstName=firstName;
@@ -99,8 +93,8 @@ public class Form {
             return this;
         }
 
-        public Form build() {
-            Form form = new Form();
+        public RegistrationForm build() {
+            RegistrationForm form = new RegistrationForm();
             form.firstName = this.firstName;
             form.lastName = this.lastName;
             form.email = this.email;

@@ -1,7 +1,7 @@
+package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -18,6 +18,7 @@ public class BasePage {
 
     public  BasePage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver,30);
         //wait = new WebDriverWait(driver,timeout, POLLING);
         //co to robi?
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
@@ -30,13 +31,6 @@ public class BasePage {
 
     public static WebElement setElement(By byLocator) {
         return driver.findElement(byLocator);
-    }
-
-    public static WebElement clickOnElement(By byLocator) {
-        setElement(byLocator);
-        WebElement elementToClick = driver.findElement(byLocator);
-        elementToClick.click();
-        return elementToClick;
     }
 
     public void scrollToSeeElement(WebElement element) {

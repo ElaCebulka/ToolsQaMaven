@@ -1,8 +1,11 @@
-import org.assertj.core.api.Assertions;
+package tests;
+
+import static org.assertj.core.api.Assertions.*;
+import org.testng.annotations.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.testng.annotations.Test;
+import pages.components.RegistrationForm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +14,9 @@ import java.util.List;
 public class FormTest {
 
     @Test
-    public void checkNewFormBulider() {
+    public void checkNewFormBuilder() {
         List<String> expectedResultList = Arrays.asList("Anna", "Kowal", "aaa@kowal.com", "123333", "Wroclaw","Polska", "test message");
-        Form form = new Form.FormBuilder().setFirstName("Anna")
+        RegistrationForm form = new RegistrationForm.FormBuilder().setFirstName("Anna")
                 .setLastName("Kowal")
                 .setEmail("aaa@kowal.com")
                 .setMobile("123333")
@@ -32,21 +35,22 @@ public class FormTest {
         result.add(form.getMessage());
         System.out.println(result);
 
-        Assertions.assertThat(result).containsExactlyElementsOf(expectedResultList);
+        assertThat(result).containsExactlyElementsOf(expectedResultList);
+
     }
 
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv")
     public void checkDifferentFormsCsvFile(ArgumentsAccessor argumentsAccessor) {
-        Form form = new Form();
-        form.firstName = argumentsAccessor.getString(0);
-        form.lastName = argumentsAccessor.getString(1);
-        form.email = argumentsAccessor.getString(2);
-        form.mobile = argumentsAccessor.getString(3);
-        form.city = argumentsAccessor.getString(4);
-        form.country = argumentsAccessor.getString(5);
-        form.message = argumentsAccessor.getString(6);
+        RegistrationForm form = new RegistrationForm.FormBuilder().setFirstName(argumentsAccessor.getString(0)) //= argumentsAccessor.getString(0);
+                .setLastName(argumentsAccessor.getString(1))
+                .setEmail(argumentsAccessor.getString(2))
+                .setMobile(argumentsAccessor.getString(3))
+                .setCity(argumentsAccessor.getString(4))
+                .setCountry(argumentsAccessor.getString(5))
+                .setMessage(argumentsAccessor.getString(6))
+                .build();
         System.out.println(form.toString());
 
         List<String> result = new ArrayList<>();
@@ -61,7 +65,7 @@ public class FormTest {
 
         List<Object> expected = argumentsAccessor.toList();
 
-        Assertions.assertThat(expected).containsExactlyElementsOf(result);
+        assertThat(expected).containsExactlyElementsOf(result);
     }
 
 }

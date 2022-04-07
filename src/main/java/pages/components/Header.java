@@ -1,8 +1,11 @@
+package pages.components;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class Header extends BasePage {
-    static By toolsQaLogoBy = By.className("tools-qa-header__logo");
+    private By toolsQaLogoBy = By.className("tools-qa-header__logo");
 
     //Tutorials menu
     String tutorialCategory1 = "QA Practices";
@@ -21,17 +24,22 @@ public class Header extends BasePage {
     //setUp
     public Header(WebDriver driver) {
         super(driver);
+        this.driver = driver;
     }
 
-   public void searchTraining(String trainingName) {
-        clickOnElement(searchHeaderMenuBy).sendKeys(trainingName);
-        clickOnElement(searchIconBy);
+    public void clickOnToolsQaLogo() {
+        driver.findElement(toolsQaLogoBy).click();
+    }
+
+    public void searchTraining(String trainingName) {
+        driver.findElement(searchHeaderMenuBy).sendKeys(trainingName);
+        driver.findElement(searchIconBy);
     }
 
     public void openTutorialFromMenu() {
-        clickOnElement(tutorialsHeaderMenuBy);
-        clickOnElement(tutorialCategory1By);
-        clickOnElement(tutorialCategory2By);
+        driver.findElement(tutorialsHeaderMenuBy);
+        driver.findElement(tutorialCategory1By);
+        driver.findElement(tutorialCategory2By);
     }
 
     //@Override
