@@ -13,10 +13,11 @@ public class HomePageTest extends BaseTest {
         homePage = new HomePage(driver);
         header = new Header(driver);
     }
-    @BeforeClass
+    @BeforeTest
     public void deleteAllCookies() {
         driver.manage().deleteAllCookies();
     }
+
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourself() {

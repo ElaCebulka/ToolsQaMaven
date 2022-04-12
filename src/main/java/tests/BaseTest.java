@@ -10,7 +10,6 @@ public  class BaseTest {
     public WebDriver driver;
 
     @BeforeSuite
-
     public void setupClass() {
         driver = DriverFactory.getDriver(DriverType.CHROME);
     }
@@ -18,6 +17,7 @@ public  class BaseTest {
 
     @AfterTest
     public void closeWindow() {
+        //driver.manage().deleteAllCookies();
        // driver.close();
     }
 

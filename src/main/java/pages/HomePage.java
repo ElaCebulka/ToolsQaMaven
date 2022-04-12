@@ -3,9 +3,12 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import pages.components.RegistrationForm;
+
+import java.util.List;
 
 public class HomePage extends BasePage {
     private final String url = "https://www.toolsqa.com/";
@@ -42,16 +45,27 @@ public class HomePage extends BasePage {
         driver.get(url);
         driver.manage().window().maximize();
     }
+    public boolean checkButtonAcceptCookiesIsDisplayed() {
+        List<WebElement> buttons = driver.findElements(acceptCookiesButtonBy);
+        if (buttons.size() > 0 && buttons.get(0).isEnabled())
+        {
+            return true;
+        }
+        return false;
+    }
 
     public void acceptCookies() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
+        if (checkButtonAcceptCookiesIsDisplayed() == true) {
+            System.out.println("if body");
+            driver.findElement(acceptCookiesButtonBy).click();
+        }
+        //wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
         try {
             Thread.sleep(1000);
         } catch (Exception e) {
             System.out.println("e");
         }
 
-        driver.findElement(acceptCookiesButtonBy).click();
     }
 
     public void clickOnEnrollYourselfButton() {
