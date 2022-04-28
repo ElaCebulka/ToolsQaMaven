@@ -14,15 +14,13 @@ public  class BaseTest {
         driver = DriverFactory.getDriver(DriverType.CHROME);
     }
 
-
     @AfterTest
     public void closeWindow() {
-        //driver.manage().deleteAllCookies();
-       // driver.close();
+        //driver.close();
     }
 
     @AfterSuite
     public void teardown() {
-       // driver.quit();
+        //driver.quit();
     }
 }
