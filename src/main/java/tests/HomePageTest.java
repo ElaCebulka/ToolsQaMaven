@@ -13,25 +13,15 @@ public class HomePageTest extends BaseTest {
         homePage = new HomePage(driver);
         header = new Header(driver);
     }
-    @BeforeClass
+    @BeforeTest
     public void deleteAllCookies() {
         driver.manage().deleteAllCookies();
     }
+
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
-    public void fillRegistrationFormEnrollYourself() {
+    public void fillRegistrationFormEnrollYourselfWithAllRequiredData() {
         homePage.openFormWithEnrollYourselfButton();
-        homePage.fillTheForm(new RegistrationForm.FormBuilder()
-                    .setFirstName("Anna")
-                    .setLastName("Kowal")
-                    .build());
-        homePage.sendForm();
-    }
-
-    //TQ-4 Filling registration form - Tutorials and Courses Grid
-    @Test
-    public void fillRegistrationFormTutorialsAndCourses() {
-        homePage.openFormFromTutorialsAndCourses();
         homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setFirstName("Anna")
                     .setLastName("Kowal")
@@ -39,16 +29,32 @@ public class HomePageTest extends BaseTest {
                     .setMobile("123111222")
                     .setCity("Wroclaw")
                     .setCountry("Poland")
+                    .setMessage("Message test")
                     .build());
         homePage.sendForm();
 
     }
-    //QT 8 Filling registration form - wrong data
+
+    //TQ-4 Filling registration form - Tutorials and Courses Grid
     @Test
-    public void fillRegistrationFormWrongData() {
+    public void fillRegistrationFormEnrollYourselfWithWrongEmail() {
         homePage.openFormFromTutorialsAndCourses();
         homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setFirstName("Anna")
+                    .setLastName("Kowal")
+                    .setEmail("aa")
+                    .setMobile("123111222")
+                    .setCity("Wroclaw")
+                    .setCountry("Poland")
+                    .build());
+        homePage.sendForm();
+
+    }
+    //TQ 8 Filling registration form - wrong data
+    @Test
+    public void fillRegistrationFormWithoutFirstName() {
+        homePage.openFormWithEnrollYourselfButton();
+        homePage.fillTheForm(new RegistrationForm.FormBuilder()
                     .setLastName("Kowal")
                     .setEmail("ana@aa.com")
                     .setMobile("aaaa")

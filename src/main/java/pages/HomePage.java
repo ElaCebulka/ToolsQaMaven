@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import pages.components.RegistrationForm;
+
 
 public class HomePage extends BasePage {
     private final String url = "https://www.toolsqa.com/";
@@ -42,16 +42,25 @@ public class HomePage extends BasePage {
         driver.get(url);
         driver.manage().window().maximize();
     }
+    public boolean checkButtonAcceptCookiesIsDisplayed() {
+        try {
+            driver.findElement(acceptCookiesButtonBy).click(); }
+        catch (org.openqa.selenium.ElementClickInterceptedException e) {
+        }
+        return false;
+    }
 
     public void acceptCookies() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(acceptCookiesButtonBy));
+        if (checkButtonAcceptCookiesIsDisplayed()) {
+            System.out.println("if body");
+            driver.findElement(acceptCookiesButtonBy).click();
+        }
         try {
             Thread.sleep(1000);
         } catch (Exception e) {
             System.out.println("e");
         }
 
-        driver.findElement(acceptCookiesButtonBy).click();
     }
 
     public void clickOnEnrollYourselfButton() {
@@ -86,7 +95,6 @@ public class HomePage extends BasePage {
         driver.findElement(countryFormBy);
         By countryValueFormBy = By.xpath("//option[contains(text(), '" + country +"')]");
         driver.findElement(countryValueFormBy);
-        //System.out.println(driver.findElement(By.xpath("//select[@class=\"upcoming__registration--input\"]/parent::div")).getText());
     }
 
     public void fillTheForm(RegistrationForm form) {
