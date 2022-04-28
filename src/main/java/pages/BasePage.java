@@ -12,16 +12,15 @@ public class BasePage {
     protected static WebDriver driver ;
     protected WebDriverWait wait;
 
-    private static final int timeout = 10;
+    private static final int timeout = 3;
     private static final int POLLING = 100;
 
 
     public  BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver,30);
-        //wait = new WebDriverWait(driver,timeout, POLLING);
+        wait = new WebDriverWait(driver,timeout,POLLING);
         //co to robi?
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+        //PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
     }
 
 

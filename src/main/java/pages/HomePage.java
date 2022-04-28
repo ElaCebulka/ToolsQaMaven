@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.components.RegistrationForm;
 
@@ -21,6 +22,7 @@ public class HomePage extends BasePage {
     By cityFormBy = By.cssSelector("input#city");
     By messageFormBy = By.cssSelector("textarea#message");
     By sendButtonFormBy = By.cssSelector("button.btn.btn-block.btn-primary");
+    By captchaFieldBy = By.cssSelector("input#code");
 
     //Tutorial and curses grid
     By firstTutorialInGridBy = By.cssSelector("a[href=\"https://www.toolsqa.com/testproject-tutorial/\"]");
@@ -42,25 +44,11 @@ public class HomePage extends BasePage {
         driver.get(url);
         driver.manage().window().maximize();
     }
-    public boolean checkButtonAcceptCookiesIsDisplayed() {
+    public void acceptCookiesIfDisplayed() {
         try {
             driver.findElement(acceptCookiesButtonBy).click(); }
         catch (org.openqa.selenium.ElementClickInterceptedException e) {
         }
-        return false;
-    }
-
-    public void acceptCookies() {
-        if (checkButtonAcceptCookiesIsDisplayed()) {
-            System.out.println("if body");
-            driver.findElement(acceptCookiesButtonBy).click();
-        }
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.out.println("e");
-        }
-
     }
 
     public void clickOnEnrollYourselfButton() {
@@ -77,14 +65,14 @@ public class HomePage extends BasePage {
     }
     public void openFormWithEnrollYourselfButton() {
         openUrl();
-        acceptCookies();
+        acceptCookiesIfDisplayed();
         clickOnEnrollYourselfButton();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(firstNameFormBy)));
     }
 
     public void openFormFromTutorialsAndCourses() {
         openUrl();
-        acceptCookies();
+        acceptCookiesIfDisplayed();
         clickOnFirstTutorialInGrid();
         clickOnEnrollTodayAdd();
         clickOnGoToRegistrationButton();
@@ -99,10 +87,8 @@ public class HomePage extends BasePage {
 
     public void fillTheForm(RegistrationForm form) {
         // scroll top - to avoid header covers FirsName input
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        //scroll to see FirsName input
-        scrollToSeeElement(driver.findElement(firstNameFormBy));
+        // JavascriptExecutor js = (JavascriptExecutor) driver;
+        //js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
         if (form.getFirstName()!= null) {
             driver.findElement(firstNameFormBy).sendKeys(form.getFirstName());
@@ -126,7 +112,37 @@ public class HomePage extends BasePage {
             driver.findElement(messageFormBy).sendKeys(form.getMessage());
         }
     }
+    public void fillCaptcha() {driver.findElement(captchaFieldBy).sendKeys("aaa");}
     public void sendForm() {
-        driver.findElement(sendButtonFormBy);
+        driver.findElement(sendButtonFormBy).click();
+    }
+
+    public String checkColorOfFontInTheForm(By by) {
+        String color = driver.findElement(by).getCssValue ("color");
+        return Color.fromString(color).asHex();
+    }
+
+    public boolean checkIfSendFormPopupIsDisplayed() {
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.alert.alert-success.show")));
+            return true;
+        }
+        catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
+
+    public boolean checkIfYourNotHumanPopupIsDisplayed() {
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.alert.alert-error.show")));
+            return true;
+        }
+        catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
+
+    public By getEmailBy() {
+        return emailFormBy;
     }
 }
