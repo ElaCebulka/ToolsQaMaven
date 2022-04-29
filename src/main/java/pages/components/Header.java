@@ -2,11 +2,13 @@ package pages.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
+import pages.SeleniumTrainingPage;
 
 public class Header extends BasePage {
     private By toolsQaLogoBy = By.className("tools-qa-header__logo");
-
+    SeleniumTrainingPage seleniumTrainingPage = new SeleniumTrainingPage(driver);
     //Tutorials menu
     String tutorialCategory1 = "QA Practices";
     String tutorialCategory2 = "Agile & Scrum";
@@ -40,6 +42,11 @@ public class Header extends BasePage {
         driver.findElement(tutorialsHeaderMenuBy);
         driver.findElement(tutorialCategory1By);
         driver.findElement(tutorialCategory2By);
+    }
+
+    public void clickOnSeleniumTrainingTab() {
+        driver.findElement(seleniumTrainingHeaderMenuBy).click();
+        wait.until(ExpectedConditions.elementToBeClickable(seleniumTrainingPage.goToRegistrationButtonBy));
     }
 
     //@Override

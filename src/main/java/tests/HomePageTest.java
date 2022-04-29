@@ -3,7 +3,6 @@ package tests;
 import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.*;
 import pages.HomePage;
-import pages.components.Header;
 import pages.components.RegistrationForm;
 
 public class HomePageTest extends BaseTest {

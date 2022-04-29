@@ -1,6 +1,9 @@
 package pages.components;
 
-public class RegistrationForm {
+import org.openqa.selenium.WebDriver;
+import pages.BasePage;
+
+public class RegistrationForm extends BasePage {
     String firstName;
     public String lastName;
     public String email;
@@ -9,7 +12,13 @@ public class RegistrationForm {
     public String country;
     public String message;
 
+    public RegistrationForm(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+    }
+
     public RegistrationForm(String firstName, String lastName, String email, String mobile, String country, String city, String message){
+        super(driver);
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -19,8 +28,6 @@ public class RegistrationForm {
         this.message=message;
     }
 
-    public RegistrationForm() {
-    }
 
     public String getFirstName(){
         return firstName;
@@ -49,6 +56,7 @@ public class RegistrationForm {
     public String getMessage(){
         return message;
     }
+
 @Override
     public String toString() {
         return "Form: firstName: " + this.firstName + ", lastName: " + this.lastName+ ", email: " +this.email + ", mobile: " + this.mobile + ", city: " + this.city +", country: " + this.country + ", message: " + this.message;
@@ -94,7 +102,7 @@ public class RegistrationForm {
         }
 
         public RegistrationForm build() {
-            RegistrationForm form = new RegistrationForm();
+            RegistrationForm form = new RegistrationForm(driver);
             form.firstName = this.firstName;
             form.lastName = this.lastName;
             form.email = this.email;
