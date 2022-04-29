@@ -8,10 +8,12 @@ import pages.components.RegistrationForm;
 public class HomePageTest extends BaseTest {
     private HomePage homePage;
     private String expectedErrorFontColour = "#dc3545";
+
     @BeforeClass
     public void setUp() {
         homePage = new HomePage(driver);
     }
+
     //TQ-3 Filling registration form - 'Enroll yourself' button
     @Test
     public void fillRegistrationFormEnrollYourselfWithAllRequiredData() {
@@ -48,6 +50,7 @@ public class HomePageTest extends BaseTest {
         //there is no popup that form was send
         Assertions.assertFalse(homePage.checkIfSendFormPopupIsDisplayed());
     }
+
     //TQ 8 Filling registration form - wrong data
     @Test
     public void fillRegistrationFormWithoutFirstName() {
