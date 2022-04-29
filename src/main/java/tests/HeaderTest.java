@@ -13,13 +13,20 @@ public class HeaderTest extends BaseTest {
         homePage = new HomePage(driver);
         header = new Header(driver);
     }
-    //@BeforeTest
     @Test
     public void checkIfToolsQALogoOpensHomePage() {
         homePage.openUrl();
-        String url = driver.getCurrentUrl();
         header.clickOnToolsQaLogo();
+        String url = driver.getCurrentUrl();
         assertThat(url).isEqualTo("https://www.toolsqa.com/");
+    }
+
+    @Test
+    public void checkIfSeleniumTrainingButtonOpensCorrectPage() {
+        homePage.openUrl();
+        header.clickOnSeleniumTrainingTab();
+        String url = driver.getCurrentUrl();
+        assertThat(url).isEqualTo("https://www.toolsqa.com/selenium-training?q=headers");
     }
 
 }
